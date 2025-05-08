@@ -19,7 +19,8 @@
       }
     ],
     "paths": {
-      "~/*": ["./src/*"]
+      "@cybercore/*": ["./src/@cybercore/*"],
+      "~/*": ["./src/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

@@ -1,0 +1,122 @@
+/* CodeBlockStyles.css */
+.cyber-code-root {
+  /* Base colors definition */
+  --cc-yellow: #f8ef02;
+  --cc-cyan: #00ffd2;
+  --cc-red: #ff003c;
+  --cc-blue: #136377;
+  --cc-green: #446d44;
+  --cc-purple: purple;
+  --cc-black: #000;
+  --cc-white: #fff;
+  --cc-dark: #333;
+
+  font-family: "Oxanium", "Courier New", monospace;
+}
+
+.cyber-code-root .cyber-glitch-3 {
+  animation: cyber-glitch-3 1s linear infinite;
+}
+
+@keyframes cyber-glitch-3 {
+  0% {
+    visibility: visible;
+  }
+  49% {
+    visibility: visible;
+  }
+  50% {
+    visibility: hidden;
+  }
+  100% {
+    visibility: hidden;
+  }
+}
+
+/* Inline code */
+.code,
+.cyber-code-inline {
+  background-color: var(--cc-dark);
+  color: var(--cc-cyan);
+  padding: 0.3rem 0.4rem 0.2rem 0.4rem;
+  font-family: "Oxanium", "Courier New", monospace !important;
+  font-size: 0.75rem;
+  border-radius: 2px;
+}
+
+/* Code block */
+.code-block,
+.cyber-code-block {
+  display: block;
+  background-color: var(--cc-dark);
+  color: var(--cc-cyan);
+  padding: 0.5rem 0.6rem 0.4rem 0.6rem;
+  font-family: "Oxanium", "Courier New", monospace !important;
+  font-size: 0.75rem;
+  white-space: pre;
+  overflow-x: auto;
+  line-height: 1.5;
+  clip-path: polygon(0 0, 0 100%, calc(100% - 20px) 100%, 100% calc(100% - 20px), 100% 0);
+}
+
+/* Title bar for code blocks */
+.cyber-code-block::before {
+  content: attr(data-title);
+  display: block;
+  color: var(--cc-yellow);
+  text-shadow: var(--cc-cyan) 1px 1px;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+/* Color variants */
+.cyber-code-inline.variant-yellow,
+.cyber-code-block.variant-yellow {
+  background-color: var(--cc-dark);
+  color: var(--cc-yellow);
+}
+
+.cyber-code-inline.variant-cyan,
+.cyber-code-block.variant-cyan {
+  background-color: var(--cc-dark);
+  color: var(--cc-cyan);
+}
+
+.cyber-code-inline.variant-red,
+.cyber-code-block.variant-red {
+  background-color: var(--cc-dark);
+  color: var(--cc-red);
+}
+
+.cyber-code-inline.variant-blue,
+.cyber-code-block.variant-blue {
+  background-color: var(--cc-dark);
+  color: var(--cc-blue);
+}
+
+.cyber-code-inline.variant-green,
+.cyber-code-block.variant-green {
+  background-color: var(--cc-dark);
+  color: var(--cc-green);
+}
+
+.cyber-code-inline.variant-purple,
+.cyber-code-block.variant-purple {
+  background-color: var(--cc-dark);
+  color: var(--cc-purple);
+}
+
+.cyber-code-inline.variant-white,
+.cyber-code-block.variant-white {
+  background-color: var(--cc-dark);
+  color: var(--cc-white);
+}
+
+/* Font fallback */
+@font-face {
+  font-family: Oxanium;
+  font-style: normal;
+  font-weight: 400;
+  src: local("Courier New");
+}

@@ -1,0 +1,335 @@
+/* ButtonStyles.css */
+/* Encapsulating all styles within a cyber-button-root selector to avoid global leaking */
+.cyber-button-root {
+  /* Base colors definition */
+  --cb-yellow: #f8ef02;
+  --cb-cyan: #00ffd2;
+  --cb-red: #ff003c;
+  --cb-blue: #136377;
+  --cb-green: #446d44;
+  --cb-purple: purple;
+  --cb-black: #000;
+  --cb-white: #fff;
+  --cb-dark: #333;
+
+  /* Color variants - scoped under cyber-button-root */
+  &.fg-yellow {
+    --fg: var(--cb-yellow);
+    color: var(--cb-yellow) !important;
+  }
+  &.bg-yellow {
+    --bg: var(--cb-yellow);
+    background-color: var(--cb-yellow);
+  }
+
+  &.fg-cyan {
+    --fg: var(--cb-cyan);
+    color: var(--cb-cyan) !important;
+  }
+  &.bg-cyan {
+    --bg: var(--cb-cyan);
+    background-color: var(--cb-cyan);
+  }
+
+  &.fg-red {
+    --fg: var(--cb-red);
+    color: var(--cb-red) !important;
+  }
+  &.bg-red {
+    --bg: var(--cb-red);
+    background-color: var(--cb-red);
+  }
+
+  &.fg-blue {
+    --fg: var(--cb-blue);
+    color: var(--cb-blue) !important;
+  }
+  &.bg-blue {
+    --bg: var(--cb-blue);
+    background-color: var(--cb-blue);
+  }
+
+  &.fg-green {
+    --fg: var(--cb-green);
+    color: var(--cb-green) !important;
+  }
+  &.bg-green {
+    --bg: var(--cb-green);
+    background-color: var(--cb-green);
+  }
+
+  &.fg-purple {
+    --fg: var(--cb-purple);
+    color: var(--cb-purple) !important;
+  }
+  &.bg-purple {
+    --bg: var(--cb-purple);
+    background-color: var(--cb-purple);
+  }
+
+  &.fg-black {
+    --fg: var(--cb-black);
+    color: var(--cb-black) !important;
+  }
+  &.bg-black {
+    --bg: var(--cb-black);
+    background-color: var(--cb-black);
+  }
+
+  &.fg-white {
+    --fg: var(--cb-white);
+    color: var(--cb-white) !important;
+  }
+  &.bg-white {
+    --bg: var(--cb-white);
+    background-color: var(--cb-white);
+  }
+
+  &.fg-dark {
+    --fg: var(--cb-dark);
+    color: var(--cb-dark) !important;
+  }
+  &.bg-dark {
+    --bg: var(--cb-dark);
+    background-color: var(--cb-dark);
+  }
+}
+
+/* Base button styles */
+.cyber-button,
+.cyber-button-small,
+.cyber-button-big {
+  --button-border: 4px;
+  --button-font-size: 1.4rem;
+  --button-padding-v: 0.9rem;
+  --button-padding-h: 2.5rem;
+  --tag-font-size: 0.55rem;
+  --button-cutout: 1.1rem;
+  --button-shadow-primary: var(--cb-cyan);
+  --button-shadow-secondary: var(--cb-yellow);
+  --button-shimmy-distance: 5;
+
+  --button-clip-1: polygon(0 2%, 100% 2%, 100% 95%, 95% 95%, 95% 90%, 85% 90%, 85% 95%, 8% 95%, 0 70%);
+  --button-clip-2: polygon(0 78%, 100% 78%, 100% 100%, 95% 100%, 95% 90%, 85% 90%, 85% 100%, 8% 100%, 0 78%);
+  --button-clip-3: polygon(0 44%, 100% 44%, 100% 54%, 95% 54%, 95% 54%, 85% 54%, 85% 54%, 8% 54%, 0 54%);
+  --button-clip-4: polygon(0 0, 100% 0, 100% 0, 95% 0, 95% 0, 85% 0, 85% 0, 8% 0, 0 0);
+  --button-clip-5: polygon(0 0, 100% 0, 100% 0, 95% 0, 95% 0, 85% 0, 85% 0, 8% 0, 0 0);
+  --button-clip-6: polygon(0 40%, 100% 40%, 100% 85%, 95% 85%, 95% 85%, 85% 85%, 85% 85%, 8% 85%, 0 70%);
+  --button-clip-7: polygon(0 63%, 100% 63%, 100% 80%, 95% 80%, 95% 80%, 85% 80%, 85% 80%, 8% 80%, 0 70%);
+
+  --button-clip: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    95% 100%,
+    95% 90%,
+    80% 90%,
+    80% 100%,
+    var(--button-cutout) 100%,
+    0 calc(100% - var(--button-cutout))
+  );
+
+  cursor: pointer;
+  background: transparent !important;
+  text-transform: uppercase;
+  font-size: var(--button-font-size);
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: var(--button-padding-v) var(--button-padding-h);
+  outline: transparent;
+  position: relative;
+  border: 0;
+  transition: background 0.2s;
+  font-family: "BlenderProBook", Arial, sans-serif;
+}
+
+/* Size variants */
+.cyber-button-small {
+  --button-padding-v: 0.6rem;
+  --button-padding-h: 1.75rem;
+  --button-font-size: 1rem;
+  --button-cutout: 0.77rem;
+  --tag-font-size: 0.44rem;
+}
+
+.cyber-button-small .tag {
+  bottom: -8%;
+}
+
+.cyber-button-big {
+  --button-padding-v: 1.1rem;
+  --button-padding-h: 3rem;
+  --button-font-size: 1.75rem;
+  --button-cutout: 1.44rem;
+  --tag-font-size: 0.66rem;
+}
+
+/* Hover state */
+.cyber-button:hover,
+.cyber-button-small:hover,
+.cyber-button-big:hover {
+  filter: brightness(90%);
+}
+
+/* Pseudo-elements for styling */
+.cyber-button:after,
+.cyber-button-small:after,
+.cyber-button-big:after,
+.cyber-button:before,
+.cyber-button-small:before,
+.cyber-button-big:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  clip-path: var(--button-clip);
+  z-index: -1;
+}
+
+.cyber-button:before,
+.cyber-button-small:before,
+.cyber-button-big:before {
+  background: var(--button-shadow-primary);
+  transform: translate(var(--button-border), 0);
+}
+
+.cyber-button:after,
+.cyber-button-small:after,
+.cyber-button-big:after {
+  background-color: var(--bg);
+}
+
+/* Tag styling */
+.cyber-button .tag,
+.cyber-button-small .tag,
+.cyber-button-big .tag {
+  position: absolute;
+  letter-spacing: 1px;
+  bottom: -5%;
+  right: 6%;
+  font-weight: normal;
+  color: #000;
+  font-size: var(--tag-font-size);
+}
+
+/* Glitch effect */
+.cyber-button .glitchtext,
+.cyber-button-small .glitchtext,
+.cyber-button-big .glitchtext {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--button-shadow-primary);
+  text-shadow:
+    2px 2px var(--button-shadow-primary),
+    -2px -2px var(--button-shadow-secondary);
+  clip-path: var(--button-clip);
+  animation: glitch 4s infinite;
+  padding: var(--button-padding-v) var(--button-padding-h);
+  display: none;
+}
+
+.cyber-button:hover .glitchtext,
+.cyber-button-small:hover .glitchtext,
+.cyber-button-big:hover .glitchtext {
+  display: block;
+}
+
+.cyber-button .glitchtext:before,
+.cyber-button-small .glitchtext:before,
+.cyber-button-big .glitchtext:before {
+  content: "";
+  position: absolute;
+  top: calc(var(--button-border) * 1);
+  right: calc(var(--button-border) * 1);
+  bottom: calc(var(--button-border) * 1);
+  left: calc(var(--button-border) * 1);
+  clip-path: var(--button-clip);
+  background-color: var(--bg);
+  z-index: -1;
+}
+
+/* Glitch animation */
+@keyframes glitch {
+  0% {
+    clip-path: var(--button-clip-1);
+  }
+  2%,
+  8% {
+    clip-path: var(--button-clip-2);
+    transform: translate(calc(var(--button-shimmy-distance) * -1%), 0);
+  }
+  6% {
+    clip-path: var(--button-clip-2);
+    transform: translate(calc(var(--button-shimmy-distance) * 1%), 0);
+  }
+  9% {
+    clip-path: var(--button-clip-2);
+    transform: translate(0, 0);
+  }
+  10% {
+    clip-path: var(--button-clip-3);
+    transform: translate(calc(var(--button-shimmy-distance) * 1%), 0);
+  }
+  13% {
+    clip-path: var(--button-clip-3);
+    transform: translate(0, 0);
+  }
+  14%,
+  21% {
+    clip-path: var(--button-clip-4);
+    transform: translate(calc(var(--button-shimmy-distance) * 1%), 0);
+  }
+  25% {
+    clip-path: var(--button-clip-5);
+    transform: translate(calc(var(--button-shimmy-distance) * 1%), 0);
+  }
+  30% {
+    clip-path: var(--button-clip-5);
+    transform: translate(calc(var(--button-shimmy-distance) * -1%), 0);
+  }
+  35%,
+  45% {
+    clip-path: var(--button-clip-6);
+    transform: translate(calc(var(--button-shimmy-distance) * -1%));
+  }
+  40% {
+    clip-path: var(--button-clip-6);
+    transform: translate(calc(var(--button-shimmy-distance) * 1%));
+  }
+  50% {
+    clip-path: var(--button-clip-6);
+    transform: translate(0, 0);
+  }
+  55% {
+    clip-path: var(--button-clip-7);
+    transform: translate(calc(var(--button-shimmy-distance) * 1%), 0);
+  }
+  60% {
+    clip-path: var(--button-clip-7);
+    transform: translate(0, 0);
+  }
+  31%,
+  61%,
+  100% {
+    clip-path: var(--button-clip-4);
+  }
+}
+
+/* Font fallbacks if BlenderProBook is not available */
+@font-face {
+  font-family: BlenderProBook;
+  font-style: normal;
+  font-weight: 400;
+  src: local("Arial");
+}
+
+.btn-disabled {
+  filter: grayscale(1);
+  opacity: 0.5;
+  pointer-events: none;
+}

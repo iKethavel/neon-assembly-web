@@ -1,0 +1,157 @@
+/* TileStyles.css */
+.cyber-tile-root {
+  /* Base colors definition */
+  --ct-yellow: #f8ef02;
+  --ct-cyan: #00ffd2;
+  --ct-red: #ff003c;
+  --ct-blue: #136377;
+  --ct-green: #446d44;
+  --ct-purple: purple;
+  --ct-black: #000;
+  --ct-white: #fff;
+  --ct-dark: #333;
+}
+
+.cyber-tile,
+.cyber-tile-small,
+.cyber-tile-big {
+  --tile-width: 360px;
+  --tile-padding: 4px;
+  --tile-edges: 20px;
+  --label-margins: calc(var(--tile-edges) - var(--tile-padding));
+  --og-clip-path: polygon(
+    0 0,
+    0 calc(100% - var(--tile-edges)),
+    var(--tile-edges) 100%,
+    100% 100%,
+    100% var(--tile-edges),
+    calc(100% - var(--tile-edges)) 0
+  );
+  width: var(--tile-width);
+  min-height: 60px;
+  clip-path: var(--og-clip-path);
+  padding: var(--tile-padding);
+  padding-bottom: var(--tile-edges);
+  background-color: var(--bg-color, var(--ct-white));
+  color: var(--text-color, var(--ct-black));
+}
+
+.cyber-tile img,
+.cyber-tile-small img,
+.cyber-tile-big img {
+  width: 100%;
+  height: auto;
+  clip-path: polygon(0 0, 0 100%, 100% 100%, 100% var(--tile-edges), calc(100% - var(--tile-edges)) 0);
+}
+
+.cyber-tile label,
+.cyber-tile-small label,
+.cyber-tile-big label {
+  display: block;
+  margin: var(--label-margins) var(--label-margins) 0 var(--label-margins);
+}
+
+.cyber-tile img ~ label,
+.cyber-tile-small img ~ label,
+.cyber-tile-big img ~ label {
+  margin-top: 0;
+}
+
+/* Size variants */
+.cyber-tile-small {
+  --tile-width: 240px;
+  --tile-edges: 14px;
+}
+
+.cyber-tile-big {
+  --tile-width: 480px;
+  --tile-edges: 26px;
+}
+
+/* Color variants */
+.cyber-tile-root.variant-yellow,
+.cyber-tile.variant-yellow,
+.cyber-tile-small.variant-yellow,
+.cyber-tile-big.variant-yellow {
+  --bg-color: var(--ct-yellow);
+  --text-color: var(--ct-black);
+}
+
+.cyber-tile-root.variant-cyan,
+.cyber-tile.variant-cyan,
+.cyber-tile-small.variant-cyan,
+.cyber-tile-big.variant-cyan {
+  --bg-color: var(--ct-cyan);
+  --text-color: var(--ct-black);
+}
+
+.cyber-tile-root.variant-red,
+.cyber-tile.variant-red,
+.cyber-tile-small.variant-red,
+.cyber-tile-big.variant-red {
+  --bg-color: var(--ct-red);
+  --text-color: var(--ct-white);
+}
+
+.cyber-tile-root.variant-blue,
+.cyber-tile.variant-blue,
+.cyber-tile-small.variant-blue,
+.cyber-tile-big.variant-blue {
+  --bg-color: var(--ct-blue);
+  --text-color: var(--ct-white);
+}
+
+.cyber-tile-root.variant-green,
+.cyber-tile.variant-green,
+.cyber-tile-small.variant-green,
+.cyber-tile-big.variant-green {
+  --bg-color: var(--ct-green);
+  --text-color: var(--ct-white);
+}
+
+.cyber-tile-root.variant-purple,
+.cyber-tile.variant-purple,
+.cyber-tile-small.variant-purple,
+.cyber-tile-big.variant-purple {
+  --bg-color: var(--ct-purple);
+  --text-color: var(--ct-white);
+}
+
+.cyber-tile-root.variant-black,
+.cyber-tile.variant-black,
+.cyber-tile-small.variant-black,
+.cyber-tile-big.variant-black {
+  --bg-color: var(--ct-black);
+  --text-color: var(--ct-white);
+}
+
+.cyber-tile-root.variant-white,
+.cyber-tile.variant-white,
+.cyber-tile-small.variant-white,
+.cyber-tile-big.variant-white {
+  --bg-color: var(--ct-white);
+  --text-color: var(--ct-black);
+}
+
+.cyber-tile-root.variant-dark,
+.cyber-tile.variant-dark,
+.cyber-tile-small.variant-dark,
+.cyber-tile-big.variant-dark {
+  --bg-color: var(--ct-dark);
+  --text-color: var(--ct-white);
+}
+
+/* Content styling */
+.cyber-tile-content {
+  padding: 0.5rem;
+}
+
+/* Responsive behavior */
+@media screen and (max-width: 768px) {
+  .cyber-tile,
+  .cyber-tile-small,
+  .cyber-tile-big {
+    max-width: 100%;
+    width: 100%;
+  }
+}
