@@ -1,6 +1,5 @@
 'use client';
 
-import { Button } from '@cybercore/ui/Button';
 import { CodeBlock } from '@cybercore/ui/CodeBlock';
 import { TextInput } from '@cybercore/ui/Input';
 import { Tile } from '@cybercore/ui/Tile';

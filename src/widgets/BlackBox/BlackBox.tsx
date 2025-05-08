@@ -31,7 +31,7 @@ export const BlackBox: React.FC<BlackBoxProps> = (props) => {
                 title={helper.role}
                 code={<div className="flex flex-col gap-2">
                   {helper.character && <Heading level={4} className="text-center mb-2">{helper.character.name}</Heading>}
-                  {!helper.character && characterData?.role === helper.role && <Button variant="purple" text="Join" size="small" onClick={() => joinBox(helper.id)} />}
+                  {!helper.character && characterData?.role === helper.role && !blackBoxData.helpers.some(h => h.character?.documentId === characterData.documentId) && <Button variant="purple" text="Join" size="small" onClick={() => joinBox(helper.id)} />}
                 </div>
                 }
               />
