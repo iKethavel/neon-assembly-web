@@ -58,7 +58,7 @@ export const useContactWidget = (characterId: string, ssn: string) => {
     try {
       const totalScore = characterData.role === 'netrunner' ? score + 500 : score;
 
-      const breachLevel = clamp(Math.round(totalScore / 1000), 0, 3)
+      const breachLevel = clamp(Math.floor(totalScore / 1000), 0, 3)
       alert(`Your hacking total score is: ${totalScore}. This is a ${breachLevel} breach level.`);
       setIsHacking(false)
 

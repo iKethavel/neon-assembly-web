@@ -8,6 +8,7 @@ import { useMutation, useSuspenseQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import { useTRPC } from '~/trpc/client';
 import Image from 'next/image';
+import { CountdownButton } from '~/widgets/CountdownButton/CountdownButton';
 
 interface MediaProps {
   characterId: string;
@@ -53,7 +54,7 @@ export const Media: React.FC<MediaProps> = ({ characterId }: MediaProps) => {
             onChange={e => setContent(e.target.value)}
           />
 
-          <Button text="make a post" onClick={handlePost} />
+          <CountdownButton action="posting" text="make a post" onClick={handlePost} />
         </div>
       </Tile>
 
