@@ -25,7 +25,7 @@ const SkillChip: React.FC<SkillChipProps> = ({ characterId, skillChipUid }: Skil
       }
 
       {!isOwnerViewing && <Button text="Inject" loading={canInject} onClick={injectSkillChip} />}
-      {isOwnerViewing && <QRCode data={`/skill-chips/${skillChipUid}`} />}
+      {isOwnerViewing && <QRCode data={`${window.origin}/skill-chips/${skillChipUid}`} />}
     </div>
   );
 };
