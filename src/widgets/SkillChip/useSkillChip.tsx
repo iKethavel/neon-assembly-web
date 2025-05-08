@@ -28,20 +28,20 @@ export const useSkillChip = ({ characterId, skillChipUid }: SkillChipProps) => {
   }))
 
 
-  const isOwnerViewing = chipData.character?.documentId === characterId
+  const isOwnerViewing = chipData.character?.documentId === _characterId
 
   const injectSkillChip = useCallback(async () => {
-    if (!characterId) return
+    if (!_characterId) return
 
     const proceed = confirm('You can inject it only with owner\'s permission. Proceed?')
     if (!proceed) return
 
     await mutateAsync({
-      characterId,
+      characterId: _characterId,
       skillChipUid
     })
 
-  }, [characterId, mutateAsync, skillChipUid])
+  }, [_characterId, mutateAsync, skillChipUid])
 
   const canInject = isPending
 
