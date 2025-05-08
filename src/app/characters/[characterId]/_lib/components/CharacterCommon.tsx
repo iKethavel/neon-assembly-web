@@ -5,7 +5,8 @@ import React, { useEffect, useState } from 'react';
 import { useTRPC } from '~/trpc/client';
 import { CodeBlock } from '@cybercore/ui/CodeBlock'
 import { Button } from '@cybercore/ui/Button';
-import { QRCode } from '../../../../../widgets/QRCode';
+import { QRCode } from '~/widgets/QRCode';
+import { useOneSignal } from '~/widgets/Notification/useOneSignal';
 
 
 interface CharacterCommonProps {
@@ -19,12 +20,15 @@ export const CharacterCommon: React.FC<CharacterCommonProps> = ({ characterId }:
   const [showQR, setShowQR] = useState(false)
   const [qr] = useState<string | null>(`http://192.168.0.100:3000/characters/${characterId}/nl`)
 
+  useOneSignal();
+
   useEffect(() => {
     localStorage.setItem('characterId', characterId)
   }, [characterId])
 
   return (
     <>
+
       <div className="grid grid-cols-[2fr_1fr_1fr] gap-1">
         <CodeBlock title='NAME: ' code={data.name} tick />
         <CodeBlock title='€$: ' code={data.eurodollars.toFixed(0)} />
@@ -44,10 +48,8 @@ export const CharacterCommon: React.FC<CharacterCommonProps> = ({ characterId }:
           <div className="bg-white p-4 rounded-lg shadow-lg max-w-md w-full">
             {qr && <QRCode data={qr} />}
           </div>
-
         </div>
       }
-
     </>
   );
 };
