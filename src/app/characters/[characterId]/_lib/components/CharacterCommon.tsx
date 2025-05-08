@@ -20,7 +20,7 @@ export const CharacterCommon: React.FC<CharacterCommonProps> = ({ characterId }:
   const [showQR, setShowQR] = useState(false)
   const [qr] = useState<string | null>(`http://192.168.0.100:3000/characters/${characterId}/nl`)
 
-  useOneSignal();
+  useOneSignal(characterId);
 
   useEffect(() => {
     localStorage.setItem('characterId', characterId)
