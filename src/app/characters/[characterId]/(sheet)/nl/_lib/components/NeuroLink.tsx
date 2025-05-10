@@ -40,7 +40,7 @@ export const NeuroLink: React.FC<NeuroLinkProps> = ({ characterId }: NeuroLinkPr
             <CodeBlock
               key={nervousSystem.id}
               className='!text-wrap'
-              title={`SENSOR: ${nervousSystem.sensor ?? 'undefined;'}`}
+              title={`${nervousSystem.sensor ?? 'undefined;'}`}
               code={nervousSystem.message}
             />
           ))}

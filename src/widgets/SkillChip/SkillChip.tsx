@@ -14,7 +14,9 @@ const SkillChip: React.FC<SkillChipProps> = ({ characterId, skillChipUid }: Skil
   return (
     <div className='flex flex-col gap-2 p-2'>
       <Tile label={`${chipData.name}${chipData.character ? ` [Belongs to: ${chipData.character.name}]` : ''}`}>
-        {chipData.advantage}
+        <p className='px-2'>
+          {chipData.advantage}
+        </p>
       </Tile>
 
       {characterData.role === 'techie' &&

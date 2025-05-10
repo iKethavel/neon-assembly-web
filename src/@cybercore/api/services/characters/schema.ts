@@ -126,6 +126,7 @@ export const CharacterCMSSchema = z.object({
   role: z.string(),
   description: z.array(ParagraphSchema),
   ssn: z.string(),
+  virus: z.null().or(z.number()),
   cyber_psychoses_level: z.null().or(z.number()), // Updated to null or number based on examples
   player: PlayerSchema,
   cyber_psychoses: z.array(CyberPsychosisSchema).or(z.null()),
@@ -206,6 +207,7 @@ export const CharacterSchema = z.object({
   role: z.string(),
   description: z.string(),
   ssn: z.string(),
+  virus: z.number(),
   cyber_psychoses_level: z.null().or(z.number().or(z.string())),
   cyber_psychoses: z.array(z.object({
     id: z.number(),

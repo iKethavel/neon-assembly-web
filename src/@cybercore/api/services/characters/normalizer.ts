@@ -15,6 +15,8 @@ export function normalizeCharacterData(
     role: cmsCharacter.role,
     description: extractTextFromParagraphs(cmsCharacter.description),
     ssn: cmsCharacter.ssn,
+
+    virus: cmsCharacter.virus ?? 0,
     cyber_psychoses_level: cmsCharacter.cyber_psychoses_level,
 
     // Transform cyber_psychoses
@@ -34,7 +36,7 @@ export function normalizeCharacterData(
     // Transform nervous_system
     nervous_system: cmsCharacter.nervous_system?.map(system => ({
       id: system.id,
-      message: extractTextFromParagraphs(system.message),
+      message: system.message,
       sensor: system.sensor
     })) ?? [],
 
