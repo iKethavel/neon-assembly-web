@@ -70,15 +70,10 @@ const LinkButton: React.FC<LinkButtonProps> = ({
     );
   }
 
-  // TODO: very bad, but we need to get the characterId from localStorage
-  const adjustedLink = href.endsWith('/characters')
-    ? `${href}/${localStorage.getItem('characterId')}`
-    : href
-
   // For internal links (Next.js navigation)
   return (
     <Link
-      href={adjustedLink}
+      href={href}
       scroll={scrollToTop}
       {...linkProps}
       passHref

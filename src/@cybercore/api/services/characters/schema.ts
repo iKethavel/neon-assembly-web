@@ -135,7 +135,7 @@ export const CharacterCMSSchema = z.object({
   skill_chips: z.array(SkillChipSchema).or(z.null()),
   contactList: z.array(ContactSchemaCms).or(z.null()),
   disadvantages: z.array(DisadvantageSchema).or(z.null()),
-  avatar: AvatarSchema
+  avatar: AvatarSchema,
 });
 
 export const ContactSchema = z.object({
@@ -208,6 +208,9 @@ export const CharacterSchema = z.object({
   description: z.string(),
   ssn: z.string(),
   virus: z.number(),
+  player: z.object({
+    username: z.string(),
+  }).or(z.null()),
   cyber_psychoses_level: z.null().or(z.number().or(z.string())),
   cyber_psychoses: z.array(z.object({
     id: z.number(),

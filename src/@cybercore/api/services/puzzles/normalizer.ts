@@ -27,6 +27,7 @@ export function normalizeBlackBox(cmsBox: BlackBoxCMS): BlackBox {
     id: cmsBox.documentId,
     name: cmsBox.name,
     content: extractTextFromContent(cmsBox.content),
+    description: cmsBox.description ?? '',
     isOpened: cmsBox.isOpened,
     slug: cmsBox.slug,
     password: cmsBox.password,

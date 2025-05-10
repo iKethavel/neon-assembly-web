@@ -1,0 +1,78 @@
+.cyber-att-2 {
+  /* Base colors definition */
+  --cb-yellow: #f8ef02;
+  --cb-cyan: #00ffd2;
+  --cb-red: #ff003c;
+  --cb-blue: #136377;
+  --cb-green: #446d44;
+  --cb-purple: purple;
+  --cb-black: #000;
+  --cb-white: #fff;
+  --cb-dark: #333;
+
+  background-color: var(--cb-red);
+  color: var(--cb-yellow);
+  text-shadow: 0 0 6px var(--cb-yellow);
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: 3px solid var(--cb-red);
+  padding: 6px;
+}
+
+/*description: good for text and containers with text. squeeze effect by removing top an bottom of the element, shake left to right, apply glitchy text-shadow, back to normal*/
+.cyber-glitch-2 {
+  animation: cyber-glitch-2 4s linear infinite;
+}
+
+@keyframes cyber-glitch-2 {
+  0% {
+    clip-path: var(--og-clip-path);
+    transform: translateX(0);
+    text-shadow: none;
+  }
+  2% {
+    clip-path: polygon(0 40%, 0 100%, 100% 100%, 100% 40%);
+    transform: translateX(0);
+    text-shadow:
+      var(--cyan) 1px 1px,
+      var(--yellow) -1px -1px;
+  }
+  4% {
+    clip-path: polygon(0 40%, 0 100%, 100% 100%, 100% 40%);
+    transform: translateX(-1rem);
+    text-shadow:
+      var(--cyan) 1px 1px,
+      var(--yellow) -1px -1px;
+  }
+  6% {
+    clip-path: polygon(0 40%, 0 100%, 100% 100%, 100% 40%);
+    transform: translateX(1rem);
+    text-shadow:
+      var(--cyan) 1px 1px,
+      var(--yellow) -1px -1px;
+  }
+  8% {
+    clip-path: polygon(0 40%, 0 100%, 100% 100%, 100% 40%);
+    transform: translateX(0);
+    text-shadow:
+      var(--cyan) 1px 1px,
+      var(--yellow) -1px -1px;
+  }
+  12% {
+    clip-path: polygon(0 10%, 0 40%, 100% 40%, 100% 10%);
+    transform: translateX(0);
+    text-shadow:
+      var(--cyan) 1px 1px,
+      var(--yellow) -1px -1px;
+  }
+  14% {
+    clip-path: var(--og-clip-path);
+    transform: translateX(0);
+    text-shadow: none;
+  }
+  100% {
+    clip-path: var(--og-clip-path);
+    transform: translateX(0);
+    text-shadow: none;
+  }
+}

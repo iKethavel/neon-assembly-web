@@ -21,7 +21,7 @@ export const SkillChips = ({ characterId }: SkillChipsProps) => {
         <Link key={skillChip.uid} href={`/skill-chips/${skillChip.uid}`} className="w-full">
           <CodeBlock
             title={skillChip.name}
-            code={skillChip.advantage}
+            code={<pre>{skillChip.advantage}</pre>}
           />
         </Link>
       ))}

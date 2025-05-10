@@ -7,6 +7,9 @@ export function normalizeCharacterData(
   return {
     id: cmsCharacter.id,
     documentId: cmsCharacter.documentId,
+    player: cmsCharacter.player ? {
+      username: cmsCharacter.player.username
+    } : null,
     name: cmsCharacter.name,
     eurodollars: cmsCharacter.eurodollars,
     createdAt: cmsCharacter.createdAt,

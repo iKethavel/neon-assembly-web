@@ -1,6 +1,5 @@
 import { redirect } from 'next/navigation'
 
-
 interface CharacterPageProps {
   params: Promise<{
     characterId: string;

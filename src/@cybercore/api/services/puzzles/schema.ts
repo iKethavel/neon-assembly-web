@@ -33,6 +33,7 @@ export const BlackBoxCMSSchema = z.object({
   publishedAt: z.string().datetime(),
   isOpened: z.boolean(),
   slug: z.string(),
+  description: z.string(),
   helpers: z.array(HelperSchema)
 });
 
@@ -44,6 +45,7 @@ export const BlackBoxSchema = z.object({
   isOpened: z.boolean(),
   slug: z.string(),
   password: z.string().nullable(),
-  helpers: z.array(HelperSchema)
+  helpers: z.array(HelperSchema),
+  description: z.string(),
 });
 

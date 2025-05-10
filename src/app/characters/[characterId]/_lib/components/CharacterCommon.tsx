@@ -28,12 +28,10 @@ export const CharacterCommon: React.FC<CharacterCommonProps> = ({ characterId }:
   }, [characterId])
 
   const virusLevel = data.virus > gameSettingsData.virusDead
-    ? 'СМЕРТЕЛЬНИЙ'
+    ? 'DEADLY 💀'
     : data.virus > gameSettingsData.virusWarning
-      ? 'ВИСОКИЙ'
-      : data.virus > 0
-        ? 'НИЗЬКИЙ'
-        : 'НІЯКИЙ'
+      ? 'HIGH'
+      : 'LOW'
 
   return (
     <>
@@ -43,7 +41,10 @@ export const CharacterCommon: React.FC<CharacterCommonProps> = ({ characterId }:
         <ToggleQR link={qr} />
       </div>
 
-      {gameSettingsData.showVirusBar && <Bar content={`УВАГА! ТВІЙ РІВЕНЬ ВІРУСУ: ${virusLevel}`} />}
+      {gameSettingsData.showVirusBar && <div className='my-1'>
+        <Bar content={`УВАГА! ТВІЙ РІВЕНЬ ВІРУСУ: ${virusLevel}`} glitch={data.virus > gameSettingsData.virusWarning} />
+      </div>
+      }
     </>
   );
 };

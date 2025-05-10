@@ -20,7 +20,13 @@ export const BlackBox: React.FC<BlackBoxProps> = (props) => {
       {
         !blackBoxData.isOpened &&
         <div className="flex flex-col gap-4">
-          <Heading level={3} className="text-center">{blackBoxData.name}</Heading>
+          <div className="mb-8">
+            <Heading level={3} className="text-center">{blackBoxData.name}</Heading>
+
+            <p>
+              {blackBoxData.description}
+            </p>
+          </div>
 
           {blackBoxData.password && <TextInput placeholder="Password" onChange={e => setPassword(e.target.value)} />}
 
