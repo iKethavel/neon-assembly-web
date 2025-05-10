@@ -67,7 +67,7 @@ const SecretSchema = z.object({
 // Schema for nervous system
 const NervousSystemSchema = z.object({
   id: z.number(),
-  message: z.array(ParagraphSchema),
+  message: z.string(),
   sensor: z.null()
 });
 
