@@ -8,7 +8,6 @@ import { useCallback } from 'react';
 export const useSkillChip = ({ characterId, skillChipUid }: SkillChipProps) => {
   const _characterId = characterId ?? localStorage.getItem('characterId') ?? ''
 
-
   const queryClient = useQueryClient();
   const trpc = useTRPC()
 

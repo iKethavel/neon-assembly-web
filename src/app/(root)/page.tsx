@@ -19,12 +19,11 @@ export default function HomePage() {
         </SignedOut>
         <SignedIn>
           <LinkButton text="Characters" glitchText="throw err;" variant="purple" href="/characters" />
-          <LinkButton text="Drugs" glitchText="throw err;" variant="red" href="/drugs" />
         </SignedIn>
       </div>
 
       <div className="mt-auto">
-        <Button text="Instagram" glitchText="throw err;" variant="dark" />
+        <LinkButton text="Telegram" glitchText="throw err;" variant="dark" href="https://web.telegram.org/a/#-1002607451537" />
       </div>
 
     </div>

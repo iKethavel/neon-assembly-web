@@ -5,6 +5,7 @@ import { Medtech } from "./_lib/components/Medtech";
 import { Media } from "./_lib/components/Media";
 import { Fixer } from "./_lib/components/Fixer";
 import { Solo } from "./_lib/components/Solo";
+import { Techie } from "./_lib/components/Techie";
 
 interface CharacterNLPageProps {
   params: Promise<{
@@ -36,4 +37,5 @@ const roleToComponent: Record<string, FC<{ characterId: string }>> = {
   'media': Media,
   'fixer': Fixer,
   'solo': Solo,
+  'techie': Techie,
 }

@@ -15,7 +15,7 @@ export const Biography: React.FC<BiographyProps> = ({ characterId }: BiographyPr
 
   return (
     <div className="grid gap-1">
-      <CodeBlock title="SSN: " code={data.ssn} />
+      <CodeBlock title="Character SSN: " code={data.ssn} />
       <CodeBlock className='!text-wrap' title='BIO: ' code={data.description} />
     </div>
   )

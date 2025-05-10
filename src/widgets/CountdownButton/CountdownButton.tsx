@@ -4,15 +4,18 @@ import type { ButtonProps } from "@cybercore/ui/Button";
 import { Button } from "@cybercore/ui/Button"
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { useState, useEffect, useCallback } from "react";
-import { set } from "zod";
 import { useTRPC } from "~/trpc/client";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const ACTIONS = ['hacking', 'posting', 'fixingChip'] as const
 type Action = typeof ACTIONS[number]
 
-type CountdownButtonProps = ButtonProps & {
+type PromiseClickHandler = (event: React.MouseEvent<HTMLElement, MouseEvent>) => Promise<void>;
+
+
+type CountdownButtonProps = Omit<ButtonProps, 'onClick'> & {
   action: Action;
+  onClick?: PromiseClickHandler
 }
 
 export const CountdownButton = ({ action, text, onClick, ...props }: CountdownButtonProps) => {
@@ -70,12 +73,16 @@ export const CountdownButton = ({ action, text, onClick, ...props }: CountdownBu
   }, [isActionDisabled]);
 
   const handleClick = useCallback<NonNullable<ButtonProps['onClick']>>((e) => {
-    const time = new Date()
-    localStorage.setItem(`action-${action}`, time.getTime().toString());
-    setActionTime(time);
     setIsActionDisabled(true);
+    if (!onClick) return
 
-    if (onClick) onClick(e)
+    onClick(e).then(() => {
+      const time = new Date()
+      localStorage.setItem(`action-${action}`, time.getTime().toString());
+      setActionTime(time);
+    }).catch(() => {
+      setIsActionDisabled(false);
+    })
   }, [action, onClick])
 
   return <Button

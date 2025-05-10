@@ -59,7 +59,6 @@ export class CharacterService {
       })
 
       return normalizedData
-
     } catch (error) {
       console.error('Error fetching characters:', error);
       throw error
@@ -206,6 +205,41 @@ export class CharacterService {
     }
   }
 
+  async getContactBySSN(ssn: string): Promise<Character> {
+    try {
+      const q = qs.stringify({
+        filters: {
+          ssn: {
+            $eq: ssn,
+          },
+        },
+        populate: populateFileds
+      }, {
+        encodeValuesOnly: true, // prettify URL
+      })
+
+      const url = `${this.baseUrl}/characters?${q}`;
+      const response = await axios.get<{ data: CharacterCMS[] }>(url, {
+        // headers: {
+        //   Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
+        // },
+      });
+
+      const rawContact = response.data.data[0]
+      if (!rawContact) {
+        throw new Error('Contact not found');
+      }
+      const contact = normalizeCharacterData(rawContact);
+      const parsedContact = CharacterSchema.parse(contact);
+
+      return parsedContact
+    } catch (error) {
+      console.error(`Error fetching character with SSN ${ssn}:`, error);
+      throw error
+    }
+  }
+
+
   async transferMoney(initiatorId: string, receiverId: string, amount: number): Promise<'success' | 'error'> {
     try {
       const initiator = await this.getCharacterById(initiatorId);
@@ -264,7 +298,8 @@ export class CharacterService {
 
       await axios({
         method: 'PUT',
-        url: `${this.baseUrl}/skill-chips/${skillChipId}`,
+        url: `${this.baseUrl
+          } / skill - chips / ${skillChipId} `,
         data: {
           data: {
             character: [character.documentId]
@@ -274,9 +309,9 @@ export class CharacterService {
 
       await axios({
         method: 'PUT',
-        url: `${this.baseUrl}/characters/${characterId}`,
+        url: `${this.baseUrl} /characters/${characterId} `,
         // headers: {
-        //   Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
+        //   Authorization: `Bearer ${ process.env.STRAPI_API_TOKEN } `,
         // },
         data: {
           data: {
@@ -297,6 +332,35 @@ export class CharacterService {
     }
   }
 
+  async fixChip(characterId: string, disadvantageId: number): Promise<void> {
+    try {
+      const character = await this.getCharacterById(characterId)
+
+      const updatedDisadvantages = character.disadvantages.filter((disadvantage) => disadvantage.id !== disadvantageId).map((disadvantage) => ({
+        sensor: disadvantage.sensor,
+        message: disadvantage.message
+      }))
+
+      await axios({
+        method: 'PUT',
+        url: `${this.baseUrl}/characters/${characterId} `,
+        // headers: {
+        //   Authorization: `Bearer ${ process.env.STRAPI_API_TOKEN } `,
+        // },
+        data: {
+          data: {
+            disadvantages: updatedDisadvantages
+          }
+        },
+      });
+
+    }
+    catch (error) {
+      console.error('Error while fixing chip', error);
+      throw error
+    }
+  }
+
   async hackContactPerson({ characterId, ssn, breachLevel }: hackContactPersonParams): Promise<void> {
     try {
       const character = await this.getCharacterById(characterId);
@@ -310,9 +374,9 @@ export class CharacterService {
 
       await axios({
         method: 'PUT',
-        url: `${this.baseUrl}/characters/${characterId}`,
+        url: `${this.baseUrl} /characters/${characterId} `,
         // headers: {
-        //   Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
+        //   Authorization: `Bearer ${ process.env.STRAPI_API_TOKEN } `,
         // },
         data: {
           data: {

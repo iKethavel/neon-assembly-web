@@ -11,14 +11,13 @@ import { QRCode } from '~/widgets/QRCode';
 const SkillChip: React.FC<SkillChipProps> = ({ characterId, skillChipUid }: SkillChipProps) => {
   const { chipData, characterData, isOwnerViewing, injectSkillChip, canInject } = useSkillChip({ characterId, skillChipUid });
 
-
   return (
     <div className='flex flex-col gap-2 p-2'>
       <Tile label={`${chipData.name}${chipData.character ? ` [Belongs to: ${chipData.character.name}]` : ''}`}>
         {chipData.advantage}
       </Tile>
 
-      {characterData.role === 'medtech' &&
+      {characterData.role === 'techie' &&
         <div>
           <CodeBlock title='Disadvantage' code={chipData.disadvantage} />
         </div>

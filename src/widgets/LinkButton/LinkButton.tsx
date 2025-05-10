@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import { Button } from '@cybercore/ui/Button'
@@ -68,10 +70,15 @@ const LinkButton: React.FC<LinkButtonProps> = ({
     );
   }
 
+  // TODO: very bad, but we need to get the characterId from localStorage
+  const adjustedLink = href.startsWith('/characters')
+    ? `${href}/${localStorage.getItem('characterId')}`
+    : href
+
   // For internal links (Next.js navigation)
   return (
     <Link
-      href={href}
+      href={adjustedLink}
       scroll={scrollToTop}
       {...linkProps}
       passHref

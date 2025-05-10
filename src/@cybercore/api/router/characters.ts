@@ -48,6 +48,19 @@ export const charactersRouter = {
       return contact;
     }
     ),
+  getContactBySSN: publicProcedure
+    .input(z.object({
+      ssn: z.string(),
+    }))
+    .output(CharacterSchema)
+    .query(async ({ input }) => {
+      const { ssn } = input;
+
+      const contact = await characterService.getContactBySSN(ssn);
+
+      return contact;
+    }
+    ),
   injectChip: publicProcedure
     .input(z.object({
       characterId: z.string(),
@@ -57,6 +70,18 @@ export const charactersRouter = {
       const { characterId, skillChipUid } = input;
 
       const contact = await characterService.injectChip(characterId, skillChipUid);
+
+      return contact;
+    }),
+  fixChip: publicProcedure
+    .input(z.object({
+      characterId: z.string(),
+      disadvantageId: z.number(),
+    }))
+    .mutation(async ({ input }) => {
+      const { characterId, disadvantageId } = input;
+
+      const contact = await characterService.fixChip(characterId, disadvantageId);
 
       return contact;
     }),

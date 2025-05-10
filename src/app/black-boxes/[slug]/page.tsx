@@ -1,7 +1,6 @@
 import LinkButton from "~/widgets/LinkButton/LinkButton";
 import { BlackBox } from "~/widgets/BlackBox/BlackBox";
-import Toggle from "./_lib/widgets/Toggle";
-import { QRCode } from "~/widgets/QRCode";
+import { ToggleQR } from "~/widgets/ToggleQR";
 
 interface BlackBoxPageProps {
   params: Promise<{
@@ -15,9 +14,7 @@ export default async function Page({ params }: BlackBoxPageProps) {
   return <div>
     <div className="flex justify-between mb-4">
       <LinkButton text="Back" href={`/characters`} />
-      <Toggle
-        onTrue={<QRCode data={`https://www.inkripple.com/black-boxes/${slug}`} />}
-      />
+      <ToggleQR />
     </div>
 
     <BlackBox blackBoxSlug={slug} />

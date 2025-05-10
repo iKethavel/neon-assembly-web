@@ -5,7 +5,6 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 import AppProvider from "~/widgets/AppProvider/AppProvider";
 
-// import "tailwindcss"
 import "~/ui/global.css";
 import AppHeader from "~/widgets/AppHeader/AppHeader";
 
