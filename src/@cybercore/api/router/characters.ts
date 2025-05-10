@@ -66,6 +66,7 @@ export const charactersRouter = {
       characterId: z.string(),
       skillChipUid: z.string(),
     }))
+    .output(z.union([z.literal('psy'), z.literal('no_effect')]))
     .mutation(async ({ input }) => {
       const { characterId, skillChipUid } = input;
 

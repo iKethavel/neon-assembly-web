@@ -7,7 +7,11 @@ import { useDrug } from './useDrug';
 
 
 export const Drug: React.FC<DrugProps> = ({ characterId, slug }) => {
-  const { drugData, handleVerify, canView, open } = useDrug({ characterId, slug });
+  const { drugData, drugError, handleVerify, canView, open } = useDrug({ characterId, slug });
+
+  if (drugError) {
+    return <div className='text-red-500'>Error: {drugError.message}</div>;
+  }
 
   return (
     <div className='flex flex-col gap-2 p-2'>

@@ -39,8 +39,8 @@ export const ContactList: React.FC<ContactListProps> = ({ characterId }: Contact
         <TextInput size='long' variant='black' placeholder="Search by name or role" value={search} onChange={e => setSearch(e.target.value)} />
       </div>
       <div className="grid grid-cols-2 gap-1 p-1">
-        {filteredContacts.map((contact) => (
-          <Link key={contact.character.id} href={`/characters/${characterId}/contact/${contact.character.ssn}`} className="w-full">
+        {filteredContacts.map((contact, idx) => (
+          <Link key={idx} href={`/characters/${characterId}/contact/${contact.character.ssn}`} className="w-full">
             <Tile
               imageSrc={contact.character.avatar ?? 'https://png.pngtree.com/png-vector/20250220/ourmid/pngtree-anonymous-user-avatar-with-glitch-effect-vector-png-image_15542337.png'}
               imageClassname='!h-[10rem] object-cover '

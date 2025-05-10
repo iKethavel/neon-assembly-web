@@ -10,7 +10,7 @@ export const useDrug = ({ characterId, slug }: DrugProps) => {
 
   const trpc = useTRPC()
 
-  const { data: drugData } = useSuspenseQuery(trpc.shop.getDrug.queryOptions({ slug }));
+  const { data: drugData, error: drugError } = useSuspenseQuery(trpc.shop.getDrug.queryOptions({ slug }));
   const { data: characterData } = useSuspenseQuery(trpc.characters.getById.queryOptions({ id: _characterId }, { enabled: !!_characterId }));
 
   const [open, setOpen] = useState(false)
@@ -22,6 +22,7 @@ export const useDrug = ({ characterId, slug }: DrugProps) => {
 
   return {
     drugData,
+    drugError,
     characterData,
     canView,
     open,

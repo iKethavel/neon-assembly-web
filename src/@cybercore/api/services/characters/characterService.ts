@@ -292,10 +292,16 @@ export class CharacterService {
     }
   }
 
-  async injectChip(characterId: string, skillChipId: string): Promise<void> {
+  async injectChip(characterId: string, skillChipId: string): Promise<'psy' | 'no_effect'> {
     try {
       const chip = await shopService.getSkillChip(skillChipId)
       const character = await this.getCharacterById(characterId)
+
+      const canProkePsy = character.skill_chips.length > 2 && chip.provokeCyberPsychosis
+      const min = character.skill_chips.length * 10
+      const willProvokePsy = min >= 100 || getRandomNumber(0, 100) > min
+
+      const virusIncrease = getRandomNumber(2, 10)
 
       await axios({
         method: 'PUT',
@@ -315,6 +321,7 @@ export class CharacterService {
         // },
         data: {
           data: {
+            virus: character.virus + virusIncrease,
             disadvantages: [
               {
                 sensor: `${chip.name} [${chip.uid}]`,
@@ -326,6 +333,8 @@ export class CharacterService {
         },
       });
 
+      if (canProkePsy && willProvokePsy) return 'psy'
+      return 'no_effect'
     } catch (error) {
       console.error('Error while injecting chip', error);
       throw error
@@ -399,4 +408,14 @@ interface hackContactPersonParams {
   characterId: string,
   ssn: string,
   breachLevel: number
+}
+
+function getRandomNumber(min: number, max: number): number {
+  // Ensure min is less than max
+  if (min > max) {
+    [min, max] = [max, min];
+  }
+
+  // Calculate random number between min and max (inclusive)
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
