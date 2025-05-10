@@ -50,7 +50,7 @@ export const useContactWidget = (characterId: string, ssn: string) => {
   }, [characterData.eurodollars, contactData.character.name, contactData.character.documentId, transfer, characterId]);
 
   const [isHacking, setIsHacking] = useState(false)
-  const handleHackingStart = useCallback(() => {
+  const handleHackingStart = useCallback(async () => {
     setIsHacking(true);
   }, []);
 

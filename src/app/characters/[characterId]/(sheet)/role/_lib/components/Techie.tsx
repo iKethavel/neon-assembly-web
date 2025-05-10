@@ -9,6 +9,7 @@ import { Button } from '@cybercore/ui/Button';
 import { CodeBlock } from '@cybercore/ui/CodeBlock';
 import { Heading } from '@cybercore/ui/Heading';
 import { CountdownButton } from '~/widgets/CountdownButton/CountdownButton';
+import Image from 'next/image';
 
 interface TechieProps {
   characterId: string;
@@ -56,8 +57,11 @@ export const Techie: React.FC<TechieProps> = ({ characterId }: TechieProps) => {
   return (
     <div className="grid gap-1">
       <Tile
-      // imageNode={<Image src="/role/solo-ability1.png" alt="Solo Ability 1" width={100} height={100} />}
+        imageNode={<Image src="/role/techie-ability1.png" alt="Solo Ability 1" width={100} height={100} />}
       >
+        <p>
+          Ти знаєш імпланти і техніку як свої 5 пальців, коли вони у тебе ще були органічні. (Можеш дізнатися негативний ефекти скілчіпа оглянувши його) І навіть можеш налаштувати його так, що чумба не буде страждати від негативних ефектів. (Можеш відключити прояв негативного ефекту у гравця який його собі вставив, не повністю “полікувати” чіп.)
+        </p>
         <div className="width-full flex flex-col gap-4">
           <SelectInput
             size='long'

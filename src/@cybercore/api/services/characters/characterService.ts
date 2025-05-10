@@ -298,8 +298,7 @@ export class CharacterService {
 
       await axios({
         method: 'PUT',
-        url: `${this.baseUrl
-          } / skill - chips / ${skillChipId} `,
+        url: `${this.baseUrl}/skill-chips/${skillChipId} `,
         data: {
           data: {
             character: [character.documentId]
@@ -309,7 +308,7 @@ export class CharacterService {
 
       await axios({
         method: 'PUT',
-        url: `${this.baseUrl} /characters/${characterId} `,
+        url: `${this.baseUrl}/characters/${characterId} `,
         // headers: {
         //   Authorization: `Bearer ${ process.env.STRAPI_API_TOKEN } `,
         // },
@@ -374,7 +373,7 @@ export class CharacterService {
 
       await axios({
         method: 'PUT',
-        url: `${this.baseUrl} /characters/${characterId} `,
+        url: `${this.baseUrl}/characters/${characterId} `,
         // headers: {
         //   Authorization: `Bearer ${ process.env.STRAPI_API_TOKEN } `,
         // },
