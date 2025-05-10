@@ -71,7 +71,7 @@ const LinkButton: React.FC<LinkButtonProps> = ({
   }
 
   // TODO: very bad, but we need to get the characterId from localStorage
-  const adjustedLink = href.startsWith('/characters')
+  const adjustedLink = href.endsWith('/characters')
     ? `${href}/${localStorage.getItem('characterId')}`
     : href
 

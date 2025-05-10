@@ -41,6 +41,9 @@ export const Media: React.FC<MediaProps> = ({ characterId }: MediaProps) => {
 
   return (
     <div className="grid gap-4">
+      <p>
+        Ти голос вулиць! Є люди які тебе слухають і репутація яку треба підтримувати. (Ти можеш публікувати новини в CyberAct. Частота: 1 раз на 15хв). А ще чум, ти маєш контакти в банках, і можеш бачити ВСІ транзакції навколо тебе. (Маєш доступ до списку транзакцій всіх учасників  Neon Assembly).
+      </p>
       <Tile
         imageNode={<Image src="/role/media-ability1.png" alt="Solo Ability 1" width={100} height={50} />}
       >

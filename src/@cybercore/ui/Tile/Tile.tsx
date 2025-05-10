@@ -65,7 +65,7 @@ export const Tile: React.FC<TileProps> = ({
   imageSrc,
   imageAlt = '',
   imageClassname = '',
-  variant = 'white',
+  variant = 'black',
   size = 'normal',
   className = '',
   onClick,
