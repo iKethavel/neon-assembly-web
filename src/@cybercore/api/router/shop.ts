@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { shopService } from "../services";
-import { ChipSchema } from "../services/shop/schema";
+import { ChipSchema, SubstanceSchema } from "../services/shop/schema";
 import { publicProcedure } from "../trpc";
 
 export const shopRouter = {
@@ -18,6 +18,16 @@ export const shopRouter = {
     .output(ChipSchema)
     .query(async ({ input: { uid } }) => {
       const data = await shopService.getSkillChip(uid);
+
+      return data;
+    }),
+  getDrug: publicProcedure
+    .input(z.object({
+      slug: z.string(),
+    }))
+    .output(SubstanceSchema)
+    .query(async ({ input: { slug } }) => {
+      const data = await shopService.getDrug(slug);
 
       return data;
     }),

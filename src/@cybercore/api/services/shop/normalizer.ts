@@ -1,4 +1,4 @@
-import type { Chip, ChipCMS } from "./types";
+import type { Chip, ChipCMS, Substance, SubstanceCMS } from "./types";
 
 /**
  * Maps a ChipCMS object to a Chip object
@@ -19,5 +19,20 @@ export function normalizeSkillChip(cmsChip: ChipCMS): Chip {
         name: cmsChip.character.name,
       }
       : null,
+  };
+}
+
+/**
+ * Maps a SubstanceCMS object to a Substance object
+ * 
+ * @param cmsSubstance - The CMS substance data to be mapped
+ * @returns A simplified Substance object
+ */
+export function normalizeSubstance(cmsSubstance: SubstanceCMS): Substance {
+  return {
+    name: cmsSubstance.name,
+    effect: cmsSubstance.effect,
+    mask: cmsSubstance.mask,
+    slug: cmsSubstance.slug
   };
 }

@@ -21,7 +21,8 @@ export default async function CharacterLayout({
   const trpc = createCaller(ctx)
   const data = await trpc.characters.getById({ id: characterId })
 
-  if (!user || !data || data.player?.username !== user.username) return redirect('/')
+  const test = !user || !data || data?.player?.username !== user.emailAddresses.at(0)?.emailAddress
+  if (test) return redirect('/')
 
   return children
 }

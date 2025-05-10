@@ -22,7 +22,7 @@ export const ToggleQR: React.FC<ToggleProps> = ({ initialState = false, link }) 
     if (link) return link
 
     const base = window !== undefined ? window.location.href : ''
-    return `${base}/characters/${localStorage.getItem('characterId')}/nl`
+    return base
   }
 
   return (

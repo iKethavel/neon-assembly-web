@@ -7,6 +7,7 @@ import { CharacterSchema } from './schema';
 import { shopService } from '..';
 
 const populateFileds = [
+  'player',
   'secrets',
   'cyber_psychoses',
   'nervous_system',
