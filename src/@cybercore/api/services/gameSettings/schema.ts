@@ -10,15 +10,21 @@ export const GameSettingsCMSSchema = z.object({
   publishedAt: z.string().datetime(),
   hackingTimer: z.number().int().positive(),
   postingTimer: z.number().int().positive(),
-  fixingChipTimer: z.number().int().positive()
+  fixingChipTimer: z.number().int().positive(),
+  investigateChipTimer: z.number().int().positive(),
+  virusWarning: z.number().int().positive(),
+  virusDead: z.number().int().positive(),
 });
 
 // Define the simplified Game Settings schema
 export const GameSettingsSchema = z.object({
   showVirusBar: z.boolean(),
+  virusWarning: z.number().int().positive(),
+  virusDead: z.number().int().positive(),
   timerSettings: z.object({
     hacking: z.number().int().positive(),
     posting: z.number().int().positive(),
-    fixingChip: z.number().int().positive()
+    fixingChip: z.number().int().positive(),
+    investigateChip: z.number().int().positive(),
   })
 });

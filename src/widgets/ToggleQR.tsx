@@ -1,6 +1,7 @@
 'use client'
 
 import { Button } from '@cybercore/ui/Button';
+import Image from 'next/image';
 import React, { useState } from 'react';
 import { QRCode } from '~/widgets/QRCode';
 
@@ -28,10 +29,9 @@ export const ToggleQR: React.FC<ToggleProps> = ({ initialState = false, link }) 
     <>
       <Button
         onClick={handleToggle}
-        className={`px-4 py-2 rounded ${isToggled ? 'bg-green-500 text-white' : 'bg-gray-300 text-black'
-          }`}
+        className={`px-4 py-2 rounded ${isToggled ? 'bg-green-500 text-white' : 'bg-gray-300 text-black'}`}
       >
-        {!isToggled ? 'QR' : 'X'}
+        {!isToggled ? <Image src="/qr.png" width={40} height={40} alt="QR" /> : 'X'}
       </Button>
 
       {isToggled && (

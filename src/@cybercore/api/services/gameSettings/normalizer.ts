@@ -9,10 +9,13 @@ import type { GameSettings, GameSettingsCMS } from "./types";
 export function normalizeGameSettings(cmsSettings: GameSettingsCMS): GameSettings {
   return {
     showVirusBar: cmsSettings.showVirusBar,
+    virusWarning: cmsSettings.virusWarning,
+    virusDead: cmsSettings.virusDead,
     timerSettings: {
       hacking: cmsSettings.hackingTimer,
       posting: cmsSettings.postingTimer,
-      fixingChip: cmsSettings.fixingChipTimer
+      fixingChip: cmsSettings.fixingChipTimer,
+      investigateChip: cmsSettings.investigateChipTimer,
     }
   };
 }

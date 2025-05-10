@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import './styles.css';
 import Link from 'next/link';
+import Image from 'next/image';
 
 // Type for color variants
 type TabsVariant = 'red' | 'yellow' | 'cyan' | 'purple' | 'blue' | 'green' | 'black' | 'white' | 'dark';
@@ -17,6 +18,8 @@ interface TabItem {
    * The label shown on the tab
    */
   label: string;
+
+  icon?: string;
 
 
   href: string;
@@ -72,6 +75,15 @@ export const Tabs: React.FC<TabsProps> = ({
       if (tabExists) return defaultTab;
     }
 
+    if (typeof window !== 'undefined') {
+      const hrefTab = window.location.pathname.split('/').reverse().at(0)
+
+      const firstEnabledTab = tabs.find(tab => tab.href === hrefTab);
+      if (firstEnabledTab) {
+        return firstEnabledTab.id;
+      }
+    }
+
     // Find first non-disabled tab
     const firstEnabledTab = tabs.find(tab => !tab.disabled);
     return firstEnabledTab ? firstEnabledTab.id : tabs[0]?.id ?? '';
@@ -105,14 +117,14 @@ export const Tabs: React.FC<TabsProps> = ({
             href={tab.href}
           >
             <button
-              className={`cyber-tab ${activeTab === tab.id ? 'active' : ''}`}
+              className={`cyber-tab relative ${activeTab === tab.id ? 'active' : ''}`}
               onClick={() => !tab.disabled && handleTabClick(tab.id)}
               disabled={tab.disabled}
               aria-selected={activeTab === tab.id}
               role="tab"
               tabIndex={activeTab === tab.id ? 0 : -1}
             >
-              {tab.label}
+              {tab.icon ? <Image src={tab.icon} alt={tab.label} width={40} height={40} objectFit='cover' className='grayscale' /> : tab.label}
             </button>
           </Link>
         ))}

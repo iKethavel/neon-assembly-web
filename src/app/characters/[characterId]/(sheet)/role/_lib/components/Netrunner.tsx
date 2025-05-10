@@ -2,6 +2,7 @@
 
 import { Tile } from '@cybercore/ui/Tile';
 import React from 'react';
+import Image from 'next/image';
 
 interface NetrunnerProps {
   characterId: string;
@@ -12,12 +13,9 @@ export const Netrunner: React.FC<NetrunnerProps> = () => {
   return (
     <div className="grid gap-1">
       <Tile
-      // imageNode={<Image src="/role/media-ability2.png" alt="Solo Ability 1" width={100} height={50} />}
+        imageNode={<Image src="/role/netrunner-ability1.png" alt="netrunner Ability 1" width={100} height={100} />}
       >
-        <div className='grid gap-1'>
-          <p>Ти краще хакаєш інших - тримай +500 до результату хакінгу</p>
-          <p>Кібербезпека, можливо і не друге твоє імʼя, але при спробах хакнути тебе -500</p>
-        </div>
+        В наш час кожен другий вміє хакати, але мало хто вміє хакати як ти. (Маєш +500 очків до результату хакінгу.) І ти вже хакнув Neon Assembly і маєш контакти всіх відвідувачів. (в тебе в списку контактів є всі участники ларпу)
       </Tile>
     </div>
   );

@@ -20,14 +20,14 @@ export default async function CharacterLayout({ children, params }: CharacterLay
       <CharacterCommon characterId={characterId} />
       <Tabs
         tabs={[
-          { id: 'bio', label: 'B', href: `bio` },
-          { id: 'nl', label: 'NL', href: `nl` },
-          { id: 'sc', label: 'SC', href: `sc` },
-          { id: 'role', label: 'R', href: `role` },
-          { id: 'cl', label: 'CL', href: `cl` },
-          { id: 'news', label: 'NS', href: `news` },
+          { id: 'bio', label: 'B', href: `bio`, icon: '/tabs/bio.png' },
+          { id: 'nl', label: 'NL', href: `nl`, icon: '/tabs/nl.png' },
+          { id: 'sc', label: 'SC', href: `sc`, icon: '/tabs/sc.png' },
+          { id: 'role', label: 'R', href: `role`, icon: '/tabs/role.png' },
+          { id: 'cl', label: 'CL', href: `cl`, icon: '/tabs/cl.png' },
+          { id: 'news', label: 'NS', href: `news`, icon: '/tabs/ns.png' },
         ]}
-        variant="green"
+        variant="purple"
       />
       <main>{children}</main>
     </div>
