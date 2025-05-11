@@ -27,7 +27,7 @@ export const useSkillChip = ({ characterId, skillChipUid }: SkillChipProps) => {
   }))
 
 
-  const isOwnerViewing = chipData.character?.documentId === _characterId || !chipData.character
+  const isOwnerViewing = chipData.character?.documentId === _characterId
 
   const injectSkillChip = useCallback(async () => {
     if (!_characterId) return
