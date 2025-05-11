@@ -56,7 +56,9 @@ export const useContactWidget = (characterId: string, ssn: string) => {
 
   const handleHackingResult = useCallback(async (score: number) => {
     try {
-      const totalScore = characterData.role === 'netrunner' ? score + 500 : score;
+      let totalScore = score
+      if (characterData.role === 'netrunner') totalScore += 500
+      if (contactData.character.role === 'netrunner') totalScore -= 500
 
       const breachLevel = clamp(Math.floor(totalScore / 1000), 0, 3)
       alert(`Your hacking total score is: ${totalScore}. This is a ${breachLevel} breach level.`);
@@ -69,7 +71,7 @@ export const useContactWidget = (characterId: string, ssn: string) => {
     } finally {
       setIsHacking(false)
     }
-  }, [characterData.role, characterId, hackContactPerson, ssn]);
+  }, [characterData.role, characterId, contactData.character.role, hackContactPerson, ssn]);
 
   return {
     contact: contactData.character,
