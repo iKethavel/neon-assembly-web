@@ -11,7 +11,7 @@ export function normalizeSkillChip(cmsChip: ChipCMS): Chip {
     uid: cmsChip.documentId,
     name: cmsChip.name,
     advantage: cmsChip.advantage,
-    disadvantage: cmsChip.disadvantage,
+    disadvantage: cmsChip.disadvantage || '',
     provokeCyberPsychosis: cmsChip.provokeCyberPsychosis,
     character: cmsChip.character
       ? {
